@@ -1,29 +1,27 @@
+// import react components.
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';          
+import { NavigationContainer } from '@react-navigation/native';                                                                  
+import { Dimensions, StyleSheet, SafeAreaView, Text, Image, TouchableOpacity, View, Button } from 'react-native'; 
 import styled from 'styled-components';
 
-export default class App extends React.Component {
-  render(){
-    return (
-      //view changed to <Container> & <text> changed to <Title>
-      <Container>
-        <Title>Hello, World!</Title>
-      </Container>
-    )
-  }
-}
 
-const Container = styled.View`
-  flex: 1;
-  background-color: #eee;
-  justify-content: center;
-  align-items: center;
-`;
+// import screens.
+import WelcomeScreen from './screens/WelcomeScreen';
+import DiaryScreen from './screens/DiaryScreen';
+import DiaryReviewScreen from './screens/DiaryReviewScreen';
+import PhotosScreen from './screens/PhotosScreen';
+import CameraScreen from './screens/CameraScreen';
 
-const Title = styled.Text`
-  font-size: 25px;
-  font-weight: 500;
-  color: #db7093;
-`;
+// main.
+const App = () => {
+  return (
+    <NavigationContainer>
+      <WelcomeScreen />
+    </NavigationContainer>
+  );
+};
+
+export default App;
 
