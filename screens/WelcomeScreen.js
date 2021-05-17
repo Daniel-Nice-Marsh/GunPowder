@@ -1,70 +1,69 @@
 import React from 'react';
 import { Button, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function WelcomeScreen(props) {
+const WelcomeScreen = ({ navigation }) => {
     return (
         <ImageBackground 
         style={styles.background}
-        //source={require('../assets/background.jpg')}
         >
             <Text style={styles.logo}>Welcome to GunPowder!</Text>
             <Text style={styles.logoText}>The digital bullet journal tracking method for when your journal isn't around. Tap the Diary button to get started.</Text>
-            <View style={styles.DiaryScreenButton}></View>
-            <View style={styles.DiaryReviewScreenButton}></View>
-            <View style={styles.CameraScreenButton}></View>
-            <View style={styles.PhotosScreenButton}></View>
+            
+            <TouchableOpacity style={styles.DiaryButton}>
+                <Button color= 'gold' title="Diary" onPress={() => navigation.navigate('Diary')}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.DiaryReviewButton}>
+                <Button color= 'violet' title="Diary Review" onPress={() => navigation.navigate('Diary Review')}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.PhotosButton}>
+                <Button color= 'orange' title="Photos" onPress={() => navigation.navigate('Photos')}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.CameraButton}>
+                <Button color= 'blue' title="Camera" onPress={() => navigation.navigate('Camera')}/>
+            </TouchableOpacity>
         </ImageBackground>
     );
-}
+};
 
 const styles = StyleSheet.create({
     background: {
         flex: 1,
         justifyContent: "flex-end",
-        alignItems: "center",
+        justifyContent: 'space-between',
+        alignItems: "flex-end",
         color: "#fff",
+        flexDirection: 'row'
     },
     logo: {
-        width: 80,
+        width: 100,
         height: 50,
-        position: 'absolute',
+        right: 120,
         top : 70,
+        position: 'absolute',
         transform: [{ scale: 2 }],
     },
     logoText: {
         width: 300,
         height: 100,
-        position: 'absolute',
         top : 130,
+        right: 35,
+        position: 'absolute',
         transform: [{ scale: 1 }],
     },
-    DiaryScreenButton: {
-        width : "40%",
-        height: 150,
-        top: 150,
-        left: 100,
-        backgroundColor: "#fc5c65",
+    DiaryButton: {
     },
-    DiaryReviewScreenButton: {
-        width : "40%",
-        height: 150,
-        top: 0,
-        left: -100,
-        backgroundColor: "#4ecdc4",
+    DiaryReviewButton: {
+
     },
-    CameraScreenButton: {
-        width : "40%",
-        height: 150,
-        top: 50,
-        left: -100,
-        backgroundColor: "#00FF00",
+    Photos: {
+
     },
-    PhotosScreenButton: {
-        width : "40%",
-        height: 150,
-        top: -100,
-        left: 100,
-        backgroundColor: "#000000",
+    Camera: {
+  
     },
 })
 

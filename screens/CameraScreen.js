@@ -1,10 +1,11 @@
 import React from 'react';
+import { Text, View } from 'react-native';
 
 function CameraScreen(props) {
     return (
-        <div>
-            
-        </div>
+        <View>
+            <Text>Camera Screen.</Text>
+        </View>
     );
 }
 
