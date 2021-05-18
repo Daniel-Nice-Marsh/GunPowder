@@ -18,6 +18,7 @@ import DiaryReviewScreen from './screens/DiaryReviewScreen';
 import PhotosScreen from './screens/PhotosScreen';
 import CameraScreen from './screens/CameraScreen';
 
+// create stack navigator.
 const Stack = createStackNavigator();
 
 // main.
