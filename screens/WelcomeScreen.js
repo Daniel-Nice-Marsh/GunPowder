@@ -18,10 +18,6 @@ const WelcomeScreen = ({ navigation }) => {
                 <Button color= 'violet' title="Diary Review" onPress={() => navigation.navigate('Diary Review')}/>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.PhotosButton}>
-                <Button color= 'orange' title="Photos" onPress={() => navigation.navigate('Photos')}/>
-            </TouchableOpacity>
-
             <TouchableOpacity style={styles.CameraButton}>
                 <Button color= 'blue' title="Camera" onPress={() => navigation.navigate('Camera')}/>
             </TouchableOpacity>
@@ -54,17 +50,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         transform: [{ scale: 1 }],
     },
-    DiaryButton: {
-    },
-    DiaryReviewButton: {
-
-    },
-    Photos: {
-
-    },
-    Camera: {
-  
-    },
+    DiaryButton: {},
+    DiaryReviewButton: {},
+    Photos: {},
+    Camera: {},
 })
 
 export default WelcomeScreen;

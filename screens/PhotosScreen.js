@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { Text, View, TextInput, Image, Button } from 'react-native';
 
 import firebase from "firebase/app";
+import { NavigationContainer } from '@react-navigation/native';
 require("firebase/firestore");
-require("firebase/firebase-storage");
+require("firebase/storage");
 
-function PhotosScreen(props) {
+function PhotosScreen(props, { navigation }) {
     const [caption, setCaption] = useState("");
 
     const uploadImage = async () => {
@@ -14,9 +15,8 @@ function PhotosScreen(props) {
         const response = await fetch(uri);
         const blob = await response.blob();
         
-
         const task = firebase
-        .Storage()
+        .storage()
         .ref()
         .child(childPath)
         .put(blob);
@@ -28,12 +28,27 @@ function PhotosScreen(props) {
 
         const taskCompleted = () => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
+                savePostData(snapshot);
                 console.log(snapshot);
             })
         }
 
         const taskError = snapshot => {
             console.log(snapshot);
+        }
+
+        const savePostData = (downloadURL) => {
+            firebase.firestore()
+            .collection('posts')
+            .doc(firebase.auth().currentUser.uid)
+            .collection("userPosts")
+            .add({
+                downloadURL,
+                caption,
+                creation: firebase.firestore.FieldValue.serverTimestamp()
+            }).then((function ()  {
+                props.navigation.popToTop()
+            }))
         }
 
         task.on("state_changed", taskProgress, taskError, taskCompleted);
