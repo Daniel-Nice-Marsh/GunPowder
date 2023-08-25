@@ -1,2 +1,2 @@
 # GunPowder
-CPD bullet journal project
+A Bullet Journal Companion App
